@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regolamento UE sull'IA: Guida Visiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFF8E1; /* Page Background - Very Light Cream/Orange */
+            color: #BF360C; /* Deep Orange for text on light backgrounds */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+        .card {
+            background-color: #FFFFFF; /* Card Background */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #E65100; /* Primary Orange accent */
+        }
+        .hero-title {
+            color: #FFFFFF; /* Text on Dark */
+        }
+        .section-title {
+            color: #E65100; /* Primary Orange */
+            border-bottom: 2px solid #F57C00; /* Medium Orange */
+            padding-bottom: 0.5rem;
+        }
+        .stat-number {
+            color: #E65100; /* Primary Orange */
+            font-weight: 700;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid #F57C00; /* Medium Orange */
+        }
+        .timeline-item:last-child {
+            border-left: none;
+            padding-left: calc(2.5rem - 2px); /* Adjust for removed border */
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -0.6rem; /* (1.2rem / 2) - (2px / 2) */
+            top: 0.1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #E65100; /* Primary Orange */
+            border-radius: 50%;
+            border: 2px solid #FFF8E1; /* Page Background */
+        }
+        .pyramid-level {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: #FFFFFF; /* Text on Dark */
+            margin: 0 auto 0.25rem auto;
+            border-radius: 0.25rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .pyramid-container {
+            min-width: 180px; /* Ensure pyramid has some base width */
+        }
+        .risk-example-item {
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-left-width: 4px;
+            border-radius: 0.25rem;
+        }
+        .risk-example-item p {
+            font-size: 0.875rem; /* text-sm */
+        }
+        .risk-example-item strong {
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* semibold */
+        }
+        .subject-card {
+            background-color: #FFF3E0; /* Very Light Orange */
+            border: 1px solid #FFA726; /* Light Orange */
+            border-left: 4px solid #F57C00; /* Medium Orange accent */
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+        .subject-card h3 {
+            color: #BF360C; /* Deep Orange */
+            font-weight: 600;
+        }
+        .nav-button {
+            background-color: #E65100; /* Primary Orange */
+            color: white;
+            padding: 0.4rem 0.6rem; /* Adjusted padding for more buttons */
+            border-radius: 0.375rem;
+            transition: background-color 0.3s;
+            font-size: 0.7rem; /* Further Adjusted font size */
+            white-space: nowrap;
+            margin: 0.1rem !important;
+        }
+        .nav-button:hover {
+            background-color: #BF360C; /* Deep Orange */
+        }
+        #navbar {
+            transform: translateY(-100%); 
+            transition: transform 0.3s ease-in-out;
+        }
+        #navbar.navbar-visible {
+            transform: translateY(0); 
+        }
+        .impact-item { /* Also used for new general content items */
+            background-color: #FFF3E0; 
+            border-left: 4px solid #F57C00; 
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+        }
+        .impact-item h3, .new-section-item h3 { /* Generalizing for new items */
+            color: #BF360C; 
+            font-weight: 600;
+            font-size: 1.125rem; 
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .impact-item h3 .icon, .new-section-item h3 .icon {
+            font-size: 1.5rem; /* text-2xl */
+            margin-right: 0.5rem; /* mr-2 */
+            color: #E65100;
+        }
+        .context-item {
+            background-color: #FFF3E0; 
+            border: 1px solid #FFA726; 
+            border-radius: 0.375rem; 
+            padding: 1rem; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%; 
+        }
+        .context-item-icon {
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem; 
+            color: #E65100; 
+        }
+        .context-item p {
+            font-size: 0.875rem; 
+            line-height: 1.25rem; 
+             color: #BF360C;
+        }
+         .context-item ul li {
+            font-size: 0.875rem; 
+            line-height: 1.25rem; 
+            color: #BF360C;
+            text-align: left;
+        }
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+        .custom-table th, .custom-table td {
+            border: 1px solid #FFA726; 
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .custom-table th {
+            background-color: #FFF3E0; 
+            color: #BF360C; 
+            font-weight: 600;
+        }
+        .custom-table tr:nth-child(even) {
+            background-color: #FFF8E1; 
+        }
+        .custom-table tr:nth-child(odd) {
+            background-color: #FFFFFF; 
+        }
+        .high-risk-category-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .high-risk-category-list li span.icon {
+            margin-right: 0.75rem;
+            color: #E65100; 
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem; 
+        }
+        .obligation-item {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 0.75rem; 
+        }
+        .obligation-item .icon {
+            font-size: 1.5rem; 
+            color: #E65100; 
+            margin-right: 0.75rem; 
+            margin-top: 0.125rem; 
+            flex-shrink: 0;
+        }
+        .obligation-item .content h4 {
+            font-weight: 600; 
+            color: #BF360C; 
+            margin-bottom: 0.25rem; 
+        }
+        .obligation-item .content p {
+            font-size: 0.875rem; 
+            color: #4E342E; 
+        }
+        .obligation-item .content .facile-context {
+            font-size: 0.8rem; 
+            color: #F57C00; 
+            margin-top: 0.25rem; 
+            font-style: italic;
+        }
+         .detail-item { /* For sub-points within expanded sections */
+            display: flex;
+            align-items: flex-start;
+            margin-top: 0.75rem; /* Increased margin for better separation */
+            padding-left: 1rem; /* Indent sub-items */
+        }
+        .detail-item .icon {
+            font-size: 1.25rem; /* text-xl */
+            color: #F57C00; /* Medium Orange */
+            margin-right: 0.625rem; /* mr-2.5 */
+            margin-top: 0.125rem; /* Align icon */
+            flex-shrink: 0;
+        }
+         .detail-item .content-detail p {
+            font-size: 0.875rem; /* text-sm */
+            color: #4E342E; /* Darker text for readability */
+            margin-bottom: 0.25rem;
+        }
+        .detail-item .content-detail .facile-context-detail {
+            font-size: 0.75rem; /* text-xs */
+            color: #E65100; /* Primary Orange */
+            margin-top: 0.125rem; /* mt-0.5 */
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="leading-relaxed">
+
+    <nav id="navbar" class="bg-[#BF360C] bg-opacity-90 backdrop-blur-md text-white p-2 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex flex-wrap justify-center items-center">
+            <a href="#introduzione" class="nav-button">Intro</a>
+            <a href="#obiettivi-contesto-eu" class="nav-button">Obiettivi EU</a>
+            <a href="#definizione-ia" class="nav-button">Definizione IA</a>
+            <a href="#alfabetizzazione-ia" class="nav-button">Alfabetizzazione</a>
+            <a href="#approccio-rischio" class="nav-button">Rischi Piramide</a>
+            <a href="#pratiche-vietate" class="nav-button">Vietate</a>
+            <a href="#alto-rischio" class="nav-button">Alto Rischio Cat.</a>
+            <a href="#obblighi-alto-rischio" class="nav-button">Obblighi Alto Rischio</a>
+            <a href="#banca-dati-ue" class="nav-button">Banca Dati UE</a>
+            <a href="#trasparenza-minimo-gpai" class="nav-button">Trasp./Min./GPAI</a>
+            <a href="#soggetti-coinvolti" class="nav-button">Soggetti</a>
+            <a href="#gpai" class="nav-button">GPAI Dettaglio</a>
+            <a href="#supporto-innovazione" class="nav-button">Innovazione</a>
+            <a href="#tempistiche" class="nav-button">Tempistiche</a>
+            <a href="#applicazione-futura" class="nav-button">Evoluzione AI Act</a>
+            <a href="#governance-sanzioni" class="nav-button">Sanzioni</a>
+            <a href="#governance-dettaglio" class="nav-button">Governance EU</a>
+            <a href="#codici-condotta-orientamenti" class="nav-button">Codici Condotta</a>
+            <a href="#prossimi-passi" class="nav-button">Azione Imprese</a>
+            <a href="#impatti-azienda" class="nav-button">Impatti Azienda</a>
+            <a href="#mezzi-ricorso" class="nav-button">Ricorsi</a>
+            <a href="#q-e-a" class="nav-button">Q&A</a>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-[#E65100] to-[#F57C00] text-white py-16 px-4 text-center">
+        <div class="container mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold hero-title mb-4">Regolamento UE sull'Intelligenza Artificiale</h1>
+            <p class="text-xl md:text-2xl mb-8 text-[#FFF3E0]">Una Guida Visiva per le Imprese per Comprendere Impatti e Opportunità</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="introduzione" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">Cos'è il Regolamento sull'IA?</h2>
+            <div class="card">
+                <p class="text-lg mb-4">Il Regolamento (UE) 2024/1689, noto come "AI Act", stabilisce un quadro giuridico armonizzato per lo sviluppo, l'immissione sul mercato e l'uso dei sistemi di intelligenza artificiale (IA) all'interno dell'Unione Europea. L'obiettivo principale è garantire che i sistemi di IA siano sicuri e rispettino i diritti fondamentali e i valori dell'UE, promuovendo al contempo l'innovazione e la leadership europea nel settore.</p>
+                <p class="text-lg">Adotta un approccio basato sul rischio, imponendo obblighi più stringenti per i sistemi di IA che presentano rischi maggiori. Questo mira a creare fiducia nell'IA e a sbloccarne il potenziale per il bene sociale ed economico.</p>
+            </div>
+        </section>
+
+        <section id="obiettivi-contesto-eu" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">AI Act: Obiettivi e Contesto Strategico Europeo</h2>
+            <div class="card">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="context-item">
+                        <div class="context-item-icon">🇪🇺</div>
+                        <p>Primo quadro normativo completo sull'IA a livello mondiale. Regolamento (UE) 2024/1689.</p>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-item-icon">🎯</div>
+                        <p class="font-semibold mb-1">Obiettivi principali:</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Garantire sicurezza e conformità IA ai diritti fondamentali UE;</li>
+                            <li>Promuovere adozione IA affidabile;</li>
+                            <li>Garantire certezza giuridica per investimenti e innovazione;</li>
+                            <li>Migliorare governance e applicazione normativa.</li>
+                        </ul>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-item-icon">🌍</div>
+                        <p class="font-semibold mb-1">Ambito di applicazione:</p>
+                        <p>Fornitori, deployer (utilizzatori), importatori, distributori, produttori, rappresentanti autorizzati di sistemi IA nell'UE. Applicabile anche a operatori extra-UE se sistema usato nell'UE.</p>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-item-icon">⚙️</div>
+                        <p class="font-semibold mb-1">Approccio Orizzontale:</p>
+                        <p>Stabilisce regole armonizzate per immissione sul mercato, messa in servizio e uso dell'IA, impedendo restrizioni nazionali divergenti.</p>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-item-icon">⚖️</div>
+                        <p class="font-semibold mb-1">Bilanciamento:</p>
+                        <p>Tentativo di equilibrare protezione cittadini e promozione innovazione (es. sandbox regolamentari).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="definizione-ia" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">Cos'è l'Intelligenza Artificiale? Definizioni e Capacità Fondamentali</h2>
+            <div class="card">
+                <p class="text-lg">La definizione più aggiornata e precisa è quella che troviamo all’interno dell’“AI Act” all’articolo 3, che descrive tale sistema come <strong class="text-[#E65100]">"automatizzato, progettato per funzionare con livelli di autonomia variabili e che può presentare adattabilità dopo la diffusione e che, per obiettivi espliciti o impliciti, deduce dall'input che riceve come generare output quali previsioni, contenuti, raccomandazioni o decisioni che possono influenzare ambienti fisici o virtuali"</strong>.</p>
+            </div>
+        </section>
+
+        <section id="alfabetizzazione-ia" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">📚 Alfabetizzazione in Materia di IA (Art. 4)</h2>
+            <div class="card">
+                <p class="text-lg mb-4">L'AI Act sottolinea l'importanza della comprensione dell'IA. I fornitori e i deployer di sistemi IA devono adottare misure per garantire un <strong class="text-[#E65100]">livello sufficiente di alfabetizzazione in materia di IA</strong> del loro personale e di altre persone che operano sistemi IA per loro conto.</p>
+                <p class="text-lg">Questo implica tenere conto delle conoscenze tecniche, dell'esperienza, dell'istruzione e della formazione necessarie, in relazione al contesto d'uso del sistema e alle persone o gruppi di persone su cui i sistemi IA verranno utilizzati. L'obiettivo è permettere un utilizzo informato e consapevole, comprendendo capacità, limiti e rischi.</p>
+            </div>
+        </section>
+
+        <section id="approccio-rischio" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-8">L'Approccio Basato sul Rischio</h2>
+            <div class="card">
+                <p class="text-lg mb-6 text-center">Il Regolamento classifica i sistemi di IA in base al livello di rischio che presentano per la salute, la sicurezza o i diritti fondamentali delle persone. Questa classificazione determina gli obblighi legali applicabili.</p>
+                <div class="flex flex-col md:flex-row gap-6 items-start md:items-center">
+                    <div class="w-full md:w-1/2 lg:w-2/5 pyramid-container space-y-1 mx-auto md:mx-0">
+                        <div class="pyramid-level bg-[#A12F00]" style="width: 40%; margin-left: auto; margin-right: auto;">Rischio Inaccettabile</div>
+                        <div class="pyramid-level bg-[#E65100]" style="width: 60%; margin-left: auto; margin-right: auto;">Rischio Elevato</div>
+                        <div class="pyramid-level bg-[#F57C00]" style="width: 80%; margin-left: auto; margin-right: auto;">Rischio Limitato</div>
+                        <div class="pyramid-level bg-[#FFA726]" style="width: 100%; color: #BF360C; margin-left: auto; margin-right: auto;">Rischio Minimo o Nullo</div>
+                    </div>
+                    <div class="w-full md:w-1/2 lg:w-3/5 space-y-3">
+                        <div class="risk-example-item border-[#A12F00] bg-red-50">
+                            <p><strong class="text-[#A12F00]">Es:</strong> social scoring, messaggi pubblicitari rivolti ai bambini, condizionamento psicologico.</p>
+                            <p class="text-xs text-red-700 font-semibold mt-1">➜ VIETATO</p>
+                        </div>
+                        <div class="risk-example-item border-[#E65100] bg-orange-50">
+                             <p><strong class="text-[#E65100]">Es:</strong> credit scoring, selezione del personale, chirurgia assistita, operazioni di polizia, infrastrutture critiche.</p>
+                             <p class="text-xs text-orange-700 font-semibold mt-1">➜ PERMESSO, nel rispetto di requisiti di IA e valutazione di conformità preventiva</p>
+                        </div>
+                        <div class="risk-example-item border-[#F57C00] bg-amber-50">
+                            <p><strong class="text-[#F57C00]">Es:</strong> chatbot.</p>
+                            <p class="text-xs text-amber-700 font-semibold mt-1">➜ PERMESSO, nel rispetto di obblighi di trasparenza e informazione</p>
+                        </div>
+                        <div class="risk-example-item border-[#FFA726] bg-yellow-50">
+                            <p><strong class="text-[#BF360C]">Es:</strong> videogiochi, sistemi antispam.</p>
+                            <p class="text-xs text-yellow-700 font-semibold mt-1">➜ PERMESSO senza obblighi, ma con un codice di condotta suggerito</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pratiche-vietate" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🚫 Pratiche di IA Vietate (Art. 5)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Alcune applicazioni dell'IA sono considerate inaccettabili in quanto contravvengono ai valori dell'UE e sono pertanto vietate. Queste includono:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">Manipolazione Subliminale</h3>
+                        <p>Sistemi che utilizzano tecniche subliminali al di là della coscienza di una persona per alterarne materialmente il comportamento in modo da causare (o poter causare) un danno fisico o psicologico.</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">Sfruttamento delle Vulnerabilità</h3>
+                        <p>Sistemi che sfruttano le vulnerabilità di specifici gruppi di persone (età, disabilità fisica o mentale) per alterarne materialmente il comportamento in modo da causare danno.</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">Social Scoring da Autorità Pubbliche</h3>
+                        <p>Valutazione o classificazione dell'affidabilità delle persone fisiche basata sul loro comportamento sociale o su caratteristiche personali note o previste, se porta a un trattamento pregiudizievole.</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">Identificazione Biometrica Remota "in Tempo Reale"</h3>
+                        <p>Uso in spazi accessibili al pubblico a fini di contrasto, salvo eccezioni strettamente definite (es. ricerca di vittime specifiche, minacce terroristiche imminenti).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="alto-rischio" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">⚠️ Sistemi di IA ad Alto Rischio (Art. 6 e Allegato III)</h2>
+            <div class="card">
+                <p class="text-lg mb-4">I sistemi di IA classificati come "ad alto rischio" sono quelli che possono avere un impatto significativo sulla salute, la sicurezza o i diritti fondamentali delle persone. Questi sistemi sono permessi, ma soggetti a rigorosi obblighi prima di poter essere immessi sul mercato o messi in servizio.</p>
+                <p class="text-lg mb-6 font-semibold text-[#E65100]">Principali Categorie di Sistemi IA ad Alto Rischio (Allegato III - Esemplificativo):</p>
+                <ul class="list-none p-0 high-risk-category-list mb-8 space-y-3">
+                    <li><span class="icon">👤</span>Biometria e categorizzazione delle persone fisiche (es. identificazione biometrica remota, se non vietata)</li>
+                    <li><span class="icon">🏗️</span>Gestione e funzionamento di infrastrutture critiche (es. acqua, gas, elettricità, traffico stradale)</li>
+                    <li><span class="icon">🎓</span>Istruzione e formazione professionale (es. ammissione, valutazione studenti)</li>
+                    <li><span class="icon">💼</span>Occupazione, gestione dei lavoratori e accesso al lavoro autonomo (es. recruiting, valutazione performance)</li>
+                    <li><span class="icon">🏦</span>Accesso a e fruizione di servizi essenziali privati e pubblici e di prestazioni e servizi pubblici (es. credit scoring, valutazione per assicurazioni vita/salute, dispatch servizi emergenza)</li>
+                    <li><span class="icon">🛡️</span>Attività di contrasto (Law enforcement) (es. poligrafi, valutazione affidabilità prove, profilazione)</li>
+                    <li><span class="icon">🛂</span>Gestione della migrazione, dell'asilo e del controllo delle frontiere (es. valutazione rischi, esame domande)</li>
+                    <li><span class="icon">🏛️</span>Amministrazione della giustizia e processi democratici (es. assistenza autorità giudiziarie, sistemi per influenzare voto)</li>
+                </ul>
+                
+                <p class="text-md mb-4 font-semibold text-[#E65100]">Requisiti Chiave per Sistemi ad Alto Rischio (Art. 8-15):</p>
+                <div class="overflow-x-auto">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Requisito Chiave (AI Act, Art. 8-15 e altri)</th>
+                                <th>Descrizione Sintetica</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sistema Gestione Rischi</td>
+                                <td>Processo continuo per identificare, analizzare, valutare e mitigare i rischi durante l'intero ciclo di vita.</td>
+                            </tr>
+                            <tr>
+                                <td>Data Governance & Qualità Dati</td>
+                                <td>Garanzia su qualità, pertinenza, rappresentatività dei dati, minimizzazione bias; conformità GDPR.</td>
+                            </tr>
+                            <tr>
+                                <td>Documentazione Tecnica</td>
+                                <td>Descrizione dettagliata del sistema, scopo, algoritmi, dati, performance, misure di sicurezza.</td>
+                            </tr>
+                            <tr>
+                                <td>Conservazione Log</td>
+                                <td>Registrazione automatica degli eventi per tracciare il funzionamento e i risultati del sistema.</td>
+                            </tr>
+                            <tr>
+                                <td>Trasparenza & Informazione Utenti</td>
+                                <td>Fornitura di istruzioni chiare e complete all'utilizzatore (deployer) su capacità e limiti.</td>
+                            </tr>
+                            <tr>
+                                <td>Sorveglianza Umana</td>
+                                <td>Misure per permettere un controllo e intervento umano efficace per prevenire o mitigare rischi.</td>
+                            </tr>
+                            <tr>
+                                <td>Accuratezza, Robustezza, Cybersicurezza</td>
+                                <td>Livelli adeguati di performance, resistenza a errori o usi impropri, protezione da minacce cyber.</td>
+                            </tr>
+                            <tr>
+                                <td>Valutazione Conformità</td>
+                                <td>Procedura formale (interna o da terzi) per dimostrare la conformità ai requisiti prima del mercato.</td>
+                            </tr>
+                            <tr>
+                                <td>Registrazione Database UE</td>
+                                <td>Iscrizione del sistema in un database pubblico europeo gestito dalla Commissione.</td>
+                            </tr>
+                            <tr>
+                                <td>Monitoraggio Post-Market</td>
+                                <td>Sorveglianza continua delle prestazioni e dei rischi dopo l'immissione sul mercato; segnalazione incidenti.</td>
+                            </tr>
+                            <tr>
+                                <td>FRIA (Fundamental Rights Impact Assessment)</td>
+                                <td>Valutazione d'impatto sui diritti fondamentali da condurre a cura del deployer (utilizzatore) per certi sistemi.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-6 text-sm text-gray-600">Questi obblighi mirano a garantire che i sistemi ad alto rischio siano sicuri, trasparenti e rispettosi dei diritti fondamentali durante tutto il loro ciclo di vita.</p>
+            </div>
+        </section>
+
+        <section id="obblighi-alto-rischio" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🔧 Obblighi di Fornitori (Developer) e Utilizzatori (Deployer) di Sistemi IA ad Alto Rischio</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Il Regolamento IA (Capo III, Sezione 3) stabilisce obblighi specifici per i diversi attori coinvolti con i sistemi IA ad alto rischio. Di seguito una sintesi per Fornitori e Utilizzatori, con un focus sul contesto di Facile.it.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-[#BF360C] mb-4 pb-2 border-b-2 border-[#F57C00]">👤 Obblighi dei Fornitori (Developer) <span class="text-sm font-normal">(Art. 16-21)</span></h3>
+                        <div class="space-y-3">
+                            <div class="obligation-item">
+                                <span class="icon">🛡️</span>
+                                <div class="content"><h4>Conformità ai Requisiti Essenziali</h4><p>Garantire che il sistema IA ad alto rischio sia conforme ai requisiti del Capo III, Sezione 2 (gestione rischi, dati, documentazione, log, trasparenza, sorveglianza umana, accuratezza, robustezza, cybersicurezza).</p><p class="facile-context">Facile.it (come Developer): Se sviluppa internamente sistemi IA per comparazione/raccomandazione classificati ad alto rischio, deve assicurarne la piena conformità.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">🛠️</span>
+                                <div class="content"><h4>Sistema di Gestione della Qualità (Art. 17)</h4><p>Istituire, documentare e mantenere un sistema di gestione della qualità (strategia normativa, progettazione, sviluppo, test, monitoraggio post-mercato, ecc.).</p><p class="facile-context">Facile.it (come Developer): Implementare processi interni robusti per la gestione della qualità dei propri sistemi IA ad alto rischio.</p></div>
+                            </div>
+                             <div class="obligation-item">
+                                <span class="icon">📚</span>
+                                <div class="content"><h4>Documentazione Tecnica (Art. 11, 18)</h4><p>Redigere e conservare (per 10 anni) la documentazione tecnica dettagliata del sistema IA.</p><p class="facile-context">Facile.it (come Developer): Mantenere documentazione completa per ogni sistema IA sviluppato, specialmente se ad alto rischio.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">💾</span>
+                                <div class="content"><h4>Conservazione Log (Art. 12, 19)</h4><p>Garantire che il sistema registri automaticamente gli eventi (log) e conservarli (min. 6 mesi, se sotto il proprio controllo).</p><p class="facile-context">Facile.it (come Developer): Progettare sistemi IA che generino e conservino log tracciabili.</p></div>
+                            </div>
+                             <div class="obligation-item">
+                                <span class="icon">🇪🇺</span>
+                                <div class="content"><h4>Valutazione Conformità, Marcatura CE, Registrazione (Art. 16, 43, 47-49)</h4><p>Sottoporre il sistema alla procedura di valutazione della conformità, redigere la dichiarazione UE di conformità, apporre la marcatura CE (se applicabile) e registrare il sistema nella banca dati UE.</p><p class="facile-context">Facile.it (come Developer): Seguire queste procedure per i propri sistemi IA ad alto rischio prima dell'immissione sul mercato/messa in servizio.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">🔧</span>
+                                <div class="content"><h4>Misure Correttive e Informazione (Art. 20)</h4><p>Adottare misure correttive se il sistema non è conforme e informare distributori, deployer, autorità.</p><p class="facile-context">Facile.it (come Developer): Avere processi per ritirare/modificare sistemi non conformi e comunicare proattivamente.</p></div>
+                            </div>
+                             <div class="obligation-item">
+                                <span class="icon">🤝</span>
+                                <div class="content"><h4>Cooperazione con Autorità (Art. 21)</h4><p>Fornire informazioni e documentazione alle autorità competenti su richiesta.</p><p class="facile-context">Facile.it (come Developer): Essere pronti a collaborare con le autorità di vigilanza.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-[#BF360C] mb-4 pb-2 border-b-2 border-[#F57C00]">🚀 Obblighi degli Utilizzatori (Deployer) <span class="text-sm font-normal">(Art. 26-27)</span></h3>
+                        <div class="space-y-3">
+                            <div class="obligation-item">
+                                <span class="icon">📖</span>
+                                <div class="content"><h4>Utilizzo Conforme (Art. 26.1)</h4><p>Utilizzare i sistemi IA ad alto rischio secondo le istruzioni d'uso fornite dal provider.</p><p class="facile-context">Facile.it (come Deployer): Seguire scrupolosamente le istruzioni per qualsiasi sistema IA (proprio o di terzi) utilizzato, ad es. per la comparazione di prodotti finanziari.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">👨‍🏫</span>
+                                <div class="content"><h4>Sorveglianza Umana (Art. 26.2)</h4><p>Affidare la sorveglianza umana a persone con competenza, formazione e autorità necessarie.</p><p class="facile-context">Facile.it (come Deployer): Formare il personale che supervisiona i sistemi IA, ad es. quelli che supportano i consulenti o i processi di valutazione.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">📊</span>
+                                <div class="content"><h4>Pertinenza Dati di Input (Art. 26.4)</h4><p>Garantire che i dati di input (se sotto il proprio controllo) siano pertinenti e sufficientemente rappresentativi.</p><p class="facile-context">Facile.it (come Deployer): Assicurare la qualità e la pertinenza dei dati forniti ai sistemi IA, ad es. i dati dei clienti usati per personalizzare le offerte.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">📡</span>
+                                <div class="content"><h4>Monitoraggio e Segnalazione (Art. 26.5)</h4><p>Monitorare il funzionamento del sistema, informare il fornitore di rischi/incidenti e, se necessario, sospendere l'uso.</p><p class="facile-context">Facile.it (come Deployer): Implementare procedure di monitoraggio continuo e segnalazione per i sistemi IA in uso.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">🗂️</span>
+                                <div class="content"><h4>Conservazione Log (Art. 26.6)</h4><p>Conservare i log generati dal sistema IA ad alto rischio (se sotto il proprio controllo) per almeno 6 mesi.</p><p class="facile-context">Facile.it (come Deployer): Assicurare la conservazione dei log per i sistemi IA utilizzati che lo richiedono.</p></div>
+                            </div>
+                            <div class="obligation-item">
+                                <span class="icon">📢</span>
+                                <div class="content"><h4>Informazione ai Lavoratori (Art. 26.7)</h4><p>Informare i rappresentanti dei lavoratori e i lavoratori interessati prima di mettere in servizio o utilizzare un sistema IA ad alto rischio sul luogo di lavoro.</p><p class="facile-context">Facile.it (come Deployer): Comunicare internamente l'uso di sistemi IA che impattano i dipendenti.</p></div>
+                            </div>
+                             <div class="obligation-item">
+                                <span class="icon">📄</span>
+                                <div class="content"><h4>Valutazione d'Impatto sui Diritti Fondamentali (FRIA - Art. 27)</h4><p>Effettuare una FRIA prima di utilizzare sistemi IA ad alto rischio se si è un organismo di diritto pubblico, un ente privato che fornisce servizi pubblici, o per specifici sistemi (es. valutazione merito creditizio, assicurazioni).</p><p class="facile-context">Facile.it (come Deployer): Valutare la necessità di una FRIA per sistemi IA usati nella comparazione di prodotti finanziari (es. assicurazioni, mutui) che potrebbero essere classificati ad alto rischio (Allegato III, punto 5.b, 5.c).</p></div>
+                            </div>
+                             <div class="obligation-item">
+                                <span class="icon">💡</span>
+                                <div class="content"><h4>Diritto alla Spiegazione (Art. 86)</h4><p>Fornire spiegazioni chiare e significative agli interessati se una decisione che produce effetti giuridici o incide significativamente si basa sull'output di un sistema IA ad alto rischio.</p><p class="facile-context">Facile.it (come Deployer): Essere pronti a spiegare agli utenti come un sistema IA ha contribuito a una decisione che li riguarda (es. una raccomandazione di prodotto specifica o una valutazione).</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="banca-dati-ue" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🗄️ Banca Dati UE per Sistemi IA ad Alto Rischio (Art. 71)</h2>
+            <div class="card">
+                <p class="text-lg mb-4">Il Regolamento istituisce una <strong class="text-[#E65100]">banca dati a livello UE</strong>, gestita dalla Commissione, per aumentare la trasparenza sui sistemi IA ad alto rischio.</p>
+                <div class="space-y-3">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">✍️</span>Registrazione Obbligatoria</h3>
+                        <p>I fornitori di sistemi IA ad alto rischio (elencati nell'Allegato III, con alcune eccezioni per infrastrutture critiche) devono registrare i loro sistemi prima dell'immissione sul mercato o messa in servizio (Art. 49).</p>
+                        <p class="facile-context">Facile.it (come Developer): Se un sistema sviluppato è classificato ad alto rischio (Allegato III), dovrà essere registrato.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🏢</span>Registrazione per Deployer Pubblici</h3>
+                        <p>Anche i deployer che sono autorità pubbliche o organismi UE devono registrare l'uso di sistemi IA ad alto rischio (Allegato III).</p>
+                         <p class="facile-context">Facile.it: Non applicabile direttamente, a meno che non agisca per conto di un ente pubblico.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🔍</span>Informazioni Pubbliche</h3>
+                        <p>La maggior parte delle informazioni nella banca dati sarà accessibile pubblicamente e di facile consultazione. Questo include dettagli sul fornitore, descrizione del sistema, finalità prevista, certificati di conformità (Allegato VIII).</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🔒</span>Sezioni Riservate</h3>
+                        <p>Per sistemi IA usati in contesti sensibili (law enforcement, migrazione, etc.), la registrazione avviene in una sezione sicura non pubblica, accessibile solo a Commissione e autorità di vigilanza (Art. 49.4).</p>
+                    </div>
+                </div>
+                <p class="mt-4 text-lg">L'obiettivo è fornire una panoramica dei sistemi IA ad alto rischio disponibili nell'UE, facilitando la vigilanza del mercato e la fiducia del pubblico.</p>
+            </div>
+        </section>
+
+        <section id="trasparenza-minimo-gpai" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">Obblighi di Trasparenza, Rischio Minimo e Modelli GPAI</h2>
+            <div class="card">
+                <div class="space-y-6">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl mb-2"><span class="icon">📢</span>1. Sistemi IA con Obblighi di Trasparenza Specifici (Art. 50)</h3>
+                        <p class="mb-3">Certi sistemi IA, anche se non classificati ad alto rischio, devono rispettare obblighi di trasparenza per garantire che gli utenti siano consapevoli e informati quando interagiscono con l'IA o con contenuti generati artificialmente. L'obiettivo è prevenire l'inganno e promuovere la fiducia.</p>
+                        <div class="space-y-4 ml-4">
+                            <div class="detail-item">
+                                <span class="icon">🤖</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Interazione Uomo-Macchina (Art. 50.1)</h4>
+                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA destinati a interagire direttamente con le persone fisiche (es. chatbot, assistenti virtuali) devono progettarli in modo che le persone siano informate di interagire con un'IA, a meno che non sia ovvio date le circostanze.</p>
+                                    <p class="facile-context-detail">Facile.it: Se utilizza un chatbot per l'assistenza clienti, deve chiaramente indicare che l'utente sta comunicando con un sistema IA.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">🖼️</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Marcatura di Contenuti Artificiali (Art. 50.2)</h4>
+                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA (inclusi GPAI) che generano contenuti audio, immagine, video o testuali sintetici devono assicurare che gli output siano marcati in formato leggibile meccanicamente e rilevabili come generati o manipolati artificialmente (es. "watermarking"). Esenzioni per editing standard o se autorizzato per legge (es. indagini penali).</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">🧐</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Riconoscimento Emozioni / Categorizzazione Biometrica (Art. 50.3)</h4>
+                                    <p>I <strong class="text-[#E65100]">deployer</strong> di tali sistemi devono informare le persone fisiche esposte al loro funzionamento. Non si applica se autorizzato per legge (es. indagini penali) e nel rispetto delle tutele.</p>
+                                </div>
+                            </div>
+                             <div class="detail-item">
+                                <span class="icon">🎭</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Deepfake e Testi Generati Pubblicati (Art. 50.4)</h4>
+                                    <p>I <strong class="text-[#E65100]">deployer</strong> che usano IA per generare o manipolare immagini, audio o video "deepfake" devono dichiarare l'origine artificiale del contenuto. Per testi generati da IA e pubblicati su questioni di interesse pubblico, va indicata l'origine artificiale, a meno di revisione umana con responsabilità editoriale. Esenzioni per opere artistiche/creative (con adeguata informativa) o se autorizzato per legge.</p>
+                                    <p class="facile-context-detail">Facile.it: Se pubblicasse articoli informativi generati da IA, dovrebbe segnalarlo, a meno di una revisione editoriale umana che se ne assuma la responsabilità.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl mb-2"><span class="icon">✅</span>2. Sistemi IA a Rischio Minimo o Nullo</h3>
+                        <p class="mb-3">Questa categoria include la stragrande maggioranza dei sistemi IA attuali, che presentano un rischio basso o assente per i diritti fondamentali, la salute o la sicurezza.</p>
+                        <div class="space-y-3 ml-4">
+                            <div class="detail-item">
+                                <span class="icon">🎮</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Esempi Comuni</h4>
+                                    <p>Filtri anti-spam nelle email, sistemi IA integrati nei videogiochi (per il comportamento dei personaggi non giocanti), sistemi di traduzione automatica per uso personale, semplici strumenti di raccomandazione basati su preferenze esplicite e non invasivi, sistemi di gestione inventario.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">📜</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Regolamentazione</h4>
+                                    <p>L'AI Act <strong class="text-[#E65100]">non impone obblighi specifici</strong> per questa categoria. Tuttavia, il Regolamento incoraggia l'adesione volontaria a <strong class="text-[#E65100]">codici di condotta</strong> (Art. 95) per promuovere l'applicazione dei principi di un'IA affidabile, come quelli etici, la sostenibilità ambientale, o la progettazione inclusiva.</p>
+                                    <p class="facile-context-detail">Facile.it: Anche per i suoi sistemi a rischio minimo, potrebbe adottare best practice e codici di condotta per rafforzare la fiducia degli utenti e dimostrare un impegno verso un'IA responsabile.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                         <h3 class="flex items-center text-xl mb-2"><span class="icon">🧠</span>3. Modelli di IA per Finalità Generali (GPAI) (Capo V)</h3>
+                        <p class="mb-3">L'AI Act dedica un intero capo (Capo V) ai modelli GPAI, riconoscendo il loro ruolo fondamentale e le sfide uniche che presentano. Un GPAI è definito (Art. 3.63) come un modello IA, anche addestrato con grandi quantità di dati usando auto-apprendimento su larga scala, caratterizzato da <strong class="text-[#E65100]">generalità significativa</strong> e capace di svolgere con competenza un'<strong class="text-[#E65100]">ampia gamma di compiti distinti</strong>. Può essere integrato in vari sistemi o applicazioni a valle.</p>
+                         <div class="space-y-3 ml-4">
+                            <div class="detail-item">
+                                <span class="icon">🚀</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Caratteristiche e Impatto</h4>
+                                    <p>Flessibilità, adattabilità, capacità di generare contenuti diversi (testo, immagini, codice). Sono la base di molti sistemi IA specifici e la loro qualità e sicurezza impattano l'intera catena del valore dell'IA.</p>
+                                    <p class="facile-context-detail">Es. Facile.it: Se Facile.it utilizzasse un modello GPAI di terzi (es. per un chatbot avanzato, analisi di documenti, generazione di contenuti personalizzati), il fornitore di quel modello GPAI avrebbe obblighi specifici. Se Facile.it sviluppasse un proprio GPAI (meno probabile), ne sarebbe il fornitore.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl mb-2"><span class="icon">📝</span>4. Obblighi per tutti i Fornitori di Modelli GPAI (Art. 53)</h3>
+                        <p class="mb-3">Indipendentemente dal fatto che un GPAI sia classificato o meno con rischio sistemico, i suoi fornitori devono adempiere a una serie di obblighi per garantire trasparenza e permettere ai fornitori a valle di conformarsi:</p>
+                        <div class="space-y-3 ml-4">
+                            <div class="detail-item">
+                                <span class="icon">📄</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Documentazione Tecnica (Allegato XI)</h4>
+                                    <p>Redigere e tenere aggiornata la documentazione tecnica del modello, inclusi dettagli su processo di addestramento, test, valutazione, architettura, parametri, dati usati, consumo energetico stimato. Da fornire all'AI Office e autorità nazionali su richiesta.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">ℹ️</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Informazioni per Fornitori a Valle (Allegato XII)</h4>
+                                    <p>Mettere a disposizione dei fornitori di sistemi IA (che integrano il GPAI) informazioni e documentazione per comprendere capacità, limiti del modello e per adempiere ai propri obblighi (es. tipo e provenienza dati di addestramento, modalità di input/output).</p>
+                                    <p class="facile-context-detail">Es. Facile.it: Se integrasse un GPAI di terzi, dovrebbe ricevere queste informazioni per valutare l'adeguatezza del modello e per la propria conformità.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">©️</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Policy sul Diritto d'Autore</h4>
+                                    <p>Attuare una politica per rispettare il diritto d'autore UE, in particolare per identificare e rispettare le riserve di diritti espresse dai titolari (Art. 4(3) Direttiva (UE) 2019/790 sul copyright nel mercato unico digitale).</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">📊</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Sintesi Dati di Addestramento</h4>
+                                    <p>Redigere e rendere pubblica una sintesi sufficientemente dettagliata dei contenuti utilizzati per l'addestramento del modello (secondo un modello fornito dall'AI Office).</p>
+                                </div>
+                            </div>
+                        </div>
+                         <p class="mt-3 text-sm">NB: Esenzioni parziali per i modelli GPAI rilasciati con licenza libera e open source (i cui parametri, architettura e uso sono pubblici) per quanto riguarda la documentazione tecnica (Art. 53.1.a) e le informazioni per i fornitori a valle (Art. 53.1.b), a meno che non presentino rischi sistemici. L'obbligo sulla policy per il copyright e sulla sintesi dei dati di addestramento si applica comunque (Art. 53.2).</p>
+                    </div>
+
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl mb-2"><span class="icon">📈</span>5. GPAI con Rischio Sistemico (Art. 51, 55)</h3>
+                        <p class="mb-3">Un modello GPAI è classificato con <strong class="text-[#E65100]">rischio sistemico</strong> se ha capacità di impatto elevato (valutate su strumenti tecnici, indicatori e benchmark) o se la Commissione lo designa come tale (Art. 51). Si presume un rischio sistemico se la quantità cumulativa di calcolo usata per l'addestramento supera <strong class="text-[#E65100]">10<sup>25</sup> FLOPs</strong> (Art. 51.2). I fornitori devono notificare all'AI Office il raggiungimento di tale soglia (Art. 52).</p>
+                        <p class="mb-3">Oltre agli obblighi dell'Art. 53, i fornitori di GPAI con rischio sistemico devono (Art. 55):</p>
+                        <div class="space-y-3 ml-4">
+                            <div class="detail-item">
+                                <span class="icon">🔬</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Valutazione Approfondita del Modello</h4>
+                                    <p>Effettuare e documentare test contraddittori (adversarial testing / red teaming), interni e/o esterni, per identificare e mitigare i rischi sistemici.</p>
+                                </div>
+                            </div>
+                             <div class="detail-item">
+                                <span class="icon">⚙️</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Valutazione e Mitigazione dei Rischi Sistemici</h4>
+                                    <p>Valutare e mitigare continuamente i possibili rischi sistemici a livello dell'Unione, comprese le loro fonti, che possono derivare dallo sviluppo, immissione sul mercato o uso del modello.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">🚨</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Tracciamento e Segnalazione Incidenti Gravi</h4>
+                                    <p>Tenere traccia, documentare e riferire senza indebito ritardo all'AI Office e, se del caso, alle autorità nazionali competenti, informazioni su incidenti gravi ed eventuali misure correttive.</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="icon">🛡️</span>
+                                <div class="content-detail">
+                                    <h4 class="font-semibold">Cybersicurezza</h4>
+                                    <p>Garantire un livello adeguato di protezione della cybersicurezza per il modello GPAI e la sua infrastruttura fisica.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 text-sm">L'AI Office incoraggia e agevola l'elaborazione di <strong class="text-[#E65100]">codici di buone pratiche</strong> (Art. 56) per aiutare i fornitori a dimostrare la conformità a questi obblighi. La Commissione può approvare tali codici o stabilire norme comuni.</p>
+                        <p class="facile-context-detail mt-2">Es. Facile.it: Come per i GPAI generici, è improbabile che Facile.it sviluppi internamente un GPAI con rischio sistemico. Tuttavia, se utilizzasse un modello di terzi così classificato, beneficerebbe indirettamente delle maggiori tutele e trasparenza imposte al fornitore di tale modello.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="soggetti-coinvolti" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">👥 Soggetti Coinvolti e Loro Obblighi Principali (Art. 3, 23-27)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Il Regolamento sull'IA definisce chiaramente i ruoli e le responsabilità dei diversi attori economici coinvolti nel ciclo di vita dei sistemi di IA. Comprendere questi ruoli è fondamentale per garantire la conformità.</p>
+                <div class="space-y-4">
+                    <div class="subject-card">
+                        <h3 class="text-xl mb-1">👤 Fornitore (Provider)</h3>
+                        <p class="text-sm mb-2 text-gray-700">Chi sviluppa un sistema di IA o lo fa sviluppare e lo immette sul mercato o lo mette in servizio con il proprio nome o marchio.</p>
+                        <p class="font-medium text-[#E65100]">Obblighi principali:</p>
+                        <ul class="list-disc list-inside text-sm ml-4">
+                            <li>Garantire la conformità del sistema IA (specialmente se ad alto rischio) ai requisiti del regolamento.</li>
+                            <li>Redigere e mantenere aggiornata la documentazione tecnica.</li>
+                            <li>Implementare un sistema di gestione della qualità.</li>
+                            <li>Sottoporre i sistemi ad alto rischio alle procedure di valutazione della conformità.</li>
+                            <li>Apporre la marcatura CE di conformità e redigere la dichiarazione UE di conformità.</li>
+                            <li>Registrare i sistemi di IA ad alto rischio nella banca dati UE.</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card">
+                        <h3 class="text-xl mb-1">🚀 Utente (Deployer/User)</h3>
+                        <p class="text-sm mb-2 text-gray-700">Qualsiasi persona fisica o giuridica, autorità pubblica, agenzia o altro organismo che utilizza un sistema di IA sotto la propria autorità (escluse attività personali non professionali).</p>
+                        <p class="font-medium text-[#E65100]">Obblighi principali (per sistemi ad alto rischio):</p>
+                        <ul class="list-disc list-inside text-sm ml-4">
+                            <li>Utilizzare il sistema secondo le istruzioni d'uso fornite dal provider.</li>
+                            <li>Garantire che i dati di input sotto il proprio controllo siano pertinenti rispetto alla finalità prevista.</li>
+                            <li>Monitorare il funzionamento del sistema e, se del caso, informare il fornitore o distributore di rischi o incidenti.</li>
+                            <li>Conservare i log generati dal sistema di IA ad alto rischio, se sotto il proprio controllo.</li>
+                            <li>Effettuare una valutazione d'impatto sui diritti fondamentali (DPIA) prima di mettere in servizio un sistema di IA ad alto rischio, se si è un'autorità pubblica o un organismo di diritto pubblico.</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card">
+                        <h3 class="text-xl mb-1">📦 Importatore</h3>
+                        <p class="text-sm mb-2 text-gray-700">Chi immette sul mercato dell'Unione un sistema di IA che reca il nome o il marchio di una persona stabilita al di fuori dell'Unione.</p>
+                        <p class="font-medium text-[#E65100]">Obblighi principali:</p>
+                        <ul class="list-disc list-inside text-sm ml-4">
+                            <li>Assicurarsi che il fornitore extra-UE abbia eseguito le procedure di valutazione della conformità.</li>
+                            <li>Verificare che il fornitore abbia redatto la documentazione tecnica e apposto la marcatura CE.</li>
+                            <li>Indicare il proprio nome, nome commerciale registrato o marchio registrato e l'indirizzo a cui può essere contattato sul sistema di IA o sulla sua documentazione.</li>
+                            <li>Non immettere sul mercato sistemi non conformi.</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card">
+                        <h3 class="text-xl mb-1">🚚 Distributore</h3>
+                        <p class="text-sm mb-2 text-gray-700">Chi mette a disposizione sul mercato dell'Unione un sistema di IA senza modificarne le proprietà (diverso da fornitore o importatore).</p>
+                        <p class="font-medium text-[#E65100]">Obblighi principali:</p>
+                        <ul class="list-disc list-inside text-sm ml-4">
+                            <li>Verificare che il sistema di IA rechi la marcatura CE richiesta e sia accompagnato dalla documentazione e dalle istruzioni necessarie.</li>
+                            <li>Verificare che il fornitore e l'importatore (se applicabile) abbiano rispettato i loro obblighi.</li>
+                            <li>Non mettere a disposizione sul mercato sistemi di IA che ritengono non conformi.</li>
+                        </ul>
+                    </div>
+                     <div class="subject-card">
+                        <h3 class="text-xl mb-1">Rappresentante Autorizzato</h3>
+                        <p class="text-sm mb-2 text-gray-700">Persona fisica o giuridica stabilita nell'Unione che ha ricevuto un mandato scritto da un fornitore extra-UE per agire per suo conto.</p>
+                        <p class="font-medium text-[#E65100]">Obblighi principali (definiti dal mandato):</p>
+                        <ul class="list-disc list-inside text-sm ml-4">
+                            <li>Conservare la dichiarazione UE di conformità e la documentazione tecnica a disposizione delle autorità.</li>
+                            <li>Cooperare con le autorità di vigilanza del mercato su loro richiesta.</li>
+                            <li>Fornire alle autorità le informazioni e la documentazione necessarie per dimostrare la conformità.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gpai" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🌐 Modelli di IA per Finalità Generali (GPAI) - Riepilogo Rischi Sistemici</h2>
+            <div class="card">
+                <p class="text-lg mb-4">Questa sezione fornisce un riepilogo focalizzato sui modelli GPAI con rischio sistemico, già trattati in dettaglio nella sezione "Obblighi di Trasparenza, Rischio Minimo e Modelli GPAI".</p>
+                <p class="text-lg mb-6">I modelli GPAI che presentano un <span class="font-semibold text-[#E65100]">rischio sistemico</span> sono soggetti a obblighi aggiuntivi (Art. 55) rispetto a quelli generali per i GPAI (Art. 53). Un modello è considerato a rischio sistemico se ha capacità ad alto impatto o se soddisfa determinate soglie, ad esempio:</p>
+                <div class="text-center my-8">
+                    <p class="text-2xl md:text-3xl text-[#BF360C]">Quantità di calcolo cumulativa usata per l'addestramento:</p>
+                    <p class="stat-number text-4xl md:text-5xl my-2">&gt; 10<sup>25</sup> FLOPs</p>
+                    <p class="text-sm text-gray-600">(FLOPs: Floating Point Operations - Operazioni in Virgola Mobile)</p>
+                </div>
+                <p class="text-lg">Gli obblighi aggiuntivi includono valutazione approfondita del modello, gestione dei rischi sistemici, segnalazione di incidenti gravi e garanzia di un adeguato livello di cybersicurezza. Per i dettagli completi, si rimanda alla sezione dedicata.</p>
+            </div>
+        </section>
+
+        <section id="supporto-innovazione" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">💡 Misure a Sostegno dell'Innovazione (Capo VI)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">L'AI Act mira a promuovere l'innovazione responsabile. A tal fine, introduce diverse misure:</p>
+                <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🧪</span>Spazi di Sperimentazione Normativa (Regulatory Sandboxes - Art. 57-59)</h3>
+                        <p>Gli Stati membri devono istituire almeno una sandbox nazionale per facilitare lo sviluppo e il test di sistemi IA innovativi in un ambiente controllato, sotto la supervisione delle autorità competenti, prima dell'immissione sul mercato. L'obiettivo è aumentare la certezza del diritto e l'apprendimento normativo.</p>
+                        <p class="facile-context">Facile.it: Potrebbe valutare la partecipazione per testare nuove soluzioni IA in un contesto guidato.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🏞️</span>Prove in Condizioni Reali (Art. 60-61)</h3>
+                        <p>Per i sistemi IA ad alto rischio (Allegato III), è possibile effettuare test temporanei in condizioni reali al di fuori delle sandbox, seguendo un piano di prova approvato dall'autorità di vigilanza e con specifiche tutele (es. consenso informato dei soggetti).</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🚀</span>Supporto a PMI e Start-up (Art. 62)</h3>
+                        <p>Gli Stati membri devono fornire accesso prioritario alle PMI e start-up nelle sandbox, organizzare attività di sensibilizzazione e formazione, e creare canali di comunicazione dedicati. Le tariffe per la valutazione della conformità dovrebbero tenere conto delle loro esigenze.</p>
+                        <p class="facile-context">Facile.it: Anche se non una PMI, l'enfasi sull'innovazione e la chiarezza normativa può essere indirettamente benefica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tempistiche" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🗓️ Tempistiche di Applicazione (Art. 113)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Il Regolamento sull'IA (pubblicato il 12 luglio 2024) entrerà in vigore progressivamente. Ecco le principali scadenze per l'applicazione degli obblighi:</p>
+                <div class="relative">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-semibold text-[#E65100]">1 Agosto 2024</h3>
+                        <p>Entrata in vigore del Regolamento (20 giorni dopo la pubblicazione).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-semibold text-[#E65100]">1 Febbraio 2025</h3>
+                        <p>Applicazione delle norme sulle <strong class="text-[#BF360C]">Pratiche di IA Vietate</strong> (Art. 5).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-semibold text-[#E65100]">1 Agosto 2025</h3>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>Applicazione delle norme sui <strong class="text-[#BF360C]">Modelli di IA per Finalità Generali (GPAI)</strong> (Art. 51-55, 98).</li>
+                            <li>Applicazione delle <strong class="text-[#BF360C]">Sanzioni</strong> (Art. 99, 101).</li>
+                             <li>Entrata in funzione della struttura di <strong class="text-[#BF360C]">Governance</strong> (Organismi Notificati, AI Board, ecc. - Capo III Sez.4, Capo VII).</li>
+                        </ul>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <h3 class="text-xl font-semibold text-[#E65100]">1 Agosto 2026</h3>
+                        <p>Applicazione generale della maggior parte delle altre disposizioni del Regolamento, inclusi gli obblighi per i <strong class="text-[#BF360C]">sistemi di IA ad Alto Rischio</strong> non coperti da tempistiche specifiche (es. obblighi per i fornitori Art. 8-15, obblighi per gli utenti Art. 26).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker" style="height: 0; border: none;"></div>
+                        <h3 class="text-xl font-semibold text-[#E65100]">1 Agosto 2027</h3>
+                        <p>Applicazione degli obblighi per i <strong class="text-[#BF360C]">sistemi di IA ad Alto Rischio che sono componenti di sicurezza</strong> di prodotti soggetti a legislazione UE specifica (elencati nell'Allegato II, Sezione A del Regolamento IA).</p>
+                    </div>
+                </div>
+                <p class="mt-6 text-sm text-gray-600">È fondamentale per le aziende monitorare attentamente queste scadenze e pianificare di conseguenza le proprie strategie di conformità.</p>
+            </div>
+        </section>
+
+        <section id="applicazione-futura" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🔮 Applicazione Futura, Disposizioni Transitorie e Revisioni (Art. 111-112)</h2>
+            <div class="card">
+                 <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">⏳</span>Disposizioni Transitorie (Art. 111)</h3>
+                        <p>L'AI Act prevede un'applicazione graduale:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm mt-2">
+                            <li>I sistemi IA componenti di sistemi IT su larga scala (Allegato X, es. Schengen) immessi sul mercato prima del 2 agosto 2027 devono conformarsi entro il 31 dicembre 2030.</li>
+                            <li>Altri sistemi IA ad alto rischio immessi sul mercato prima del 2 agosto 2026 sono soggetti al regolamento solo se subiscono modifiche significative. Tuttavia, quelli usati da autorità pubbliche devono conformarsi entro il 2 agosto 2030.</li>
+                            <li>I fornitori di modelli GPAI immessi sul mercato prima del 2 agosto 2025 hanno tempo fino al 2 agosto 2027 per conformarsi.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🔄</span>Valutazione e Riesame (Art. 112)</h3>
+                        <p>La Commissione Europea valuterà e riesaminerà regolarmente l'AI Act per adeguarlo agli sviluppi tecnologici e di mercato:</p>
+                        <ul class="list-disc list-inside ml-4 text-sm mt-2">
+                            <li>Annualmente: Revisione dell'elenco delle pratiche vietate (Art. 5) e dei sistemi ad alto rischio (Allegato III).</li>
+                            <li>Entro il 2 agosto 2028 (e poi ogni 4 anni): Valutazione sulla necessità di modificare le aree ad alto rischio, i sistemi con obblighi di trasparenza, l'efficacia della governance, e i progressi nella normazione per l'efficienza energetica dei GPAI.</li>
+                            <li>Entro il 2 agosto 2029 (e poi ogni 4 anni): Relazione generale di valutazione e riesame del regolamento, inclusa l'eventuale necessità di un'agenzia UE dedicata.</li>
+                        </ul>
+                        <p class="mt-2">Questo approccio dinamico mira a mantenere il quadro normativo pertinente ed efficace nel tempo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="governance-sanzioni" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">⚖️ Sanzioni Previste (Capo XII)</h2>
+            <div class="card">
+                 <p class="text-lg mb-6">La non conformità al Regolamento sull'IA può comportare sanzioni pecuniarie significative (applicabili dal 1 Agosto 2025):</p>
+                <div class="chart-container" style="height: 300px; max-height: 350px;">
+                    <canvas id="penaltiesChart"></canvas>
+                </div>
+                <p class="mt-6 text-sm text-center text-gray-600">Le sanzioni sono concepite per essere efficaci, proporzionate e dissuasive, incentivando le imprese a rispettare pienamente le disposizioni del regolamento. Gli Stati membri stabiliscono le norme sulle sanzioni tenendo conto degli interessi delle PMI.</p>
+            </div>
+        </section>
+
+        <section id="governance-dettaglio" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🏛️ Struttura di Governance Europea (Capo VII)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">L'AI Act istituisce una struttura di governance multilivello per assicurare un'applicazione efficace e armonizzata del regolamento:</p>
+                <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🇪🇺</span>Ufficio Europeo per l'IA (AI Office - Art. 64, Decisione C(2024)390)</h3>
+                        <p>Istituito presso la Commissione Europea, ha il compito di sviluppare competenze e capacità UE sull'IA, contribuire all'attuazione, monitorare i modelli GPAI, e supportare la cooperazione tra autorità nazionali.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🤝</span>Comitato Europeo per l'IA (AI Board - Art. 65-66)</h3>
+                        <p>Composto da un rappresentante per Stato membro, fornisce consulenza e assistenza alla Commissione e agli Stati membri. Facilita l'applicazione coerente, contribuisce a orientamenti, norme, e coordina le autorità nazionali competenti.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🗣️</span>Forum Consultivo (Art. 67)</h3>
+                        <p>Composto da una selezione equilibrata di portatori di interessi (industria, PMI, start-up, società civile, mondo accademico), fornisce consulenza tecnica all'AI Board e alla Commissione.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🔬</span>Gruppo di Esperti Scientifici Indipendenti (Art. 68)</h3>
+                        <p>Supporta l'AI Office, in particolare per i modelli GPAI, segnalando possibili rischi sistemici, contribuendo a metodologie di valutazione e fornendo consulenza sulla classificazione dei modelli.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🚩</span>Autorità Nazionali Competenti (Art. 70)</h3>
+                        <p>Ciascuno Stato membro designa almeno un'autorità di notifica e un'autorità di vigilanza del mercato per supervisionare l'applicazione del regolamento a livello nazionale. Devono disporre di risorse adeguate e agire in modo indipendente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section id="codici-condotta-orientamenti" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">📜 Codici di Condotta e Orientamenti (Capo X)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Per promuovere un'IA etica e affidabile e facilitare l'applicazione del Regolamento:</p>
+                <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🤝</span>Codici di Condotta Volontari (Art. 95)</h3>
+                        <p>L'AI Office e gli Stati membri incoraggiano lo sviluppo di codici di condotta per sistemi IA <strong class="text-[#E65100]">diversi da quelli ad alto rischio</strong>, per promuovere l'applicazione volontaria dei requisiti dell'alto rischio o di altri requisiti (es. sostenibilità ambientale, progettazione inclusiva). Possono essere elaborati da fornitori, deployer o loro organizzazioni, con il coinvolgimento dei portatori di interessi.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">📖</span>Orientamenti della Commissione (Art. 96)</h3>
+                        <p>La Commissione elaborerà orientamenti sull'applicazione pratica del Regolamento, con particolare attenzione a: requisiti per alto rischio, pratiche vietate, modifiche sostanziali, obblighi di trasparenza, e la relazione con altre normative UE. Questi orientamenti terranno conto delle esigenze delle PMI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prossimi-passi" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🚀 Prossimi Passi per le Imprese</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Le imprese che sviluppano, forniscono o utilizzano sistemi di IA dovrebbero iniziare a prepararsi ora per garantire la conformità con il Regolamento sull'IA. Alcuni passi chiave includono:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">1. Mappare i Sistemi IA</h3>
+                        <p>Inventariare e comprendere tutti i sistemi di IA attualmente in uso o in fase di sviluppo all'interno dell'organizzazione.</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">2. Valutare i Rischi</h3>
+                        <p>Classificare ogni sistema di IA secondo le categorie di rischio del Regolamento (vietato, alto rischio, trasparenza specifica, rischio minimo).</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">3. Pianificare la Conformità</h3>
+                        <p>Sviluppare una roadmap per implementare i requisiti applicabili, specialmente per i sistemi ad alto rischio (es. gestione dei rischi, governance dei dati, documentazione).</p>
+                    </div>
+                    <div class="p-4 bg-[#FFF3E0] rounded-lg border border-[#FFA726]">
+                        <h3 class="text-xl font-semibold text-[#BF360C] mb-2">4. Rimanere Aggiornati</h3>
+                        <p>Seguire gli sviluppi normativi, gli atti delegati, gli standard di armonizzazione e le linee guida che verranno pubblicati.</p>
+                    </div>
+                </div>
+                <p class="mt-8 text-lg">Affrontare proattivamente il Regolamento sull'IA non solo garantirà la conformità, ma potrà anche rafforzare la fiducia dei clienti e posizionare l'azienda come leader responsabile nell'innovazione dell'IA.</p>
+            </div>
+        </section>
+
+        <section id="impatti-azienda" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🏢 Impatti su Facile.it (Analisi Preliminare)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">Il Regolamento IA avrà implicazioni specifiche per aziende come Facile.it, che operano nel settore della comparazione e intermediazione di prodotti e servizi. È cruciale una valutazione interna dettagliata, ma ecco alcune aree di potenziale rilevanza:</p>
+                <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3>1) Aree di Potenziale Rilevanza: Comparazione e Raccomandazione</h3>
+                        <p>Se i sistemi di AI utilizzati per comparare o raccomandare prodotti (es. assicurazioni, mutui, prestiti) effettuano una profilazione o una valutazione che incide significativamente sull'accesso a tali servizi, potrebbero essere classificati come ad alto rischio (da valutare caso per caso in base ai criteri dell'Art. 6 e Allegato III).</p>
+                        <p class="mt-2"><strong class="text-[#E65100]">Focus:</strong> Valutazione del merito creditizio o dell'accessibilità a prodotti finanziari.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3>2) Personalizzazione e Profilazione Utenti</h3>
+                        <p>L'uso di AI per personalizzare l'esperienza utente o le offerte deve rispettare i principi di trasparenza e non discriminazione. Se la profilazione è intensa e impatta diritti fondamentali, potrebbero scattare obblighi più stringenti.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3>3) Chatbot e Assistenti Virtuali</h3>
+                        <p>Rientrano generalmente nel "rischio limitato" con obblighi di trasparenza (Art. 50): gli utenti devono essere informati che stanno interagendo con un sistema di IA.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3>4) Sistemi di Fraud Detection</h3>
+                        <p>Potrebbero avere una classificazione di rischio specifica a seconda del loro impatto e contesto d'uso. Una valutazione attenta sarà necessaria per determinare se rientrano nell'alto rischio (es. se usati per negare servizi essenziali).</p>
+                    </div>
+                </div>
+                 <p class="mt-8 text-md text-gray-700">Questa è un'analisi preliminare. Ogni sistema IA utilizzato o in sviluppo dovrà essere esaminato attentamente alla luce delle definizioni e dei criteri del Regolamento per determinarne la classificazione di rischio e gli obblighi conseguenti.</p>
+            </div>
+        </section>
+
+        <section id="mezzi-ricorso" class="mb-12 pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">🛡️ Mezzi di Ricorso e Tutela (Capo IX, Sez. 4)</h2>
+            <div class="card">
+                <p class="text-lg mb-6">L'AI Act rafforza la tutela delle persone, prevedendo specifici mezzi di ricorso:</p>
+                 <div class="space-y-4">
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">📢</span>Diritto di Presentare un Reclamo (Art. 85)</h3>
+                        <p>Qualsiasi persona fisica o giuridica che ritenga vi sia stata una violazione del Regolamento può presentare un reclamo alla pertinente autorità di vigilanza del mercato. Questo si aggiunge ad altri ricorsi amministrativi o giurisdizionali.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">💡</span>Diritto alla Spiegazione (Art. 86)</h3>
+                        <p>Le persone interessate da una decisione di un deployer basata principalmente sull'output di un sistema IA ad alto rischio (elencato nell'Allegato III, con eccezioni) che produce effetti giuridici o incide significativamente, hanno diritto a ottenere dal deployer spiegazioni chiare e significative sul ruolo del sistema IA e sui principali elementi della decisione.</p>
+                    </div>
+                    <div class="impact-item">
+                        <h3 class="flex items-center text-xl"><span class="icon">🗣️</span>Protezione degli Informatori (Whistleblowers - Art. 87)</h3>
+                        <p>La Direttiva (UE) 2019/1937 sulla protezione delle persone che segnalano violazioni del diritto dell'Unione si applica anche alle segnalazioni di violazioni dell'AI Act.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="q-e-a" class="pt-16 -mt-16">
+            <h2 class="text-3xl font-semibold section-title mb-6">❓ Domande e Risposte</h2>
+            <div class="card text-center">
+                <p class="text-xl mb-4 text-[#E65100]">Avete domande o dubbi sul Regolamento IA e sui suoi impatti?</p>
+                <p class="text-lg mb-6">Questo è il momento di discuterne. Siamo qui per aiutarvi a navigare questa nuova normativa e a prepararvi al meglio.</p>
+                <p class="text-md text-gray-700">Non esitate a porre qualsiasi quesito.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#BF360C] text-center py-8 text-[#FFF8E1]">
+        <p>&copy; <span id="currentYear"></span> Guida Visiva al Regolamento UE sull'IA. Contenuto a scopo informativo.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const vibrantOrangesPalette = {
+            deepOrange: '#BF360C',
+            primaryOrange: '#E65100',
+            mediumOrange: '#F57C00',
+            lightOrange: '#FFA726',
+            veryLightOrange: '#FFF3E0',
+            pageBackground: '#FFF8E1',
+            white: '#FFFFFF',
+            textOnLight: '#BF360C'
+        };
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let currentLine = '';
+            const lines = [];
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            if (currentLine.trim().length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+        
+        const tooltipTitleCallback = function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            } else {
+              return label;
+            }
+        };
+
+        // Chart for high-risk categories removed, so its JS is also removed.
+
+        const penaltiesCtx = document.getElementById('penaltiesChart');
+        const penaltyLabels = [
+            wrapLabel('Pratiche Vietate (Art. 5)', 16), 
+            wrapLabel('Altri Obblighi (es. Alto Rischio, GPAI)', 16),
+            wrapLabel('Fornitura Info Errate', 16)
+        ];
+        if (penaltiesCtx) { // Check if element exists before creating chart
+            new Chart(penaltiesCtx, {
+                type: 'bar',
+                data: {
+                    labels: penaltyLabels,
+                    datasets: [{
+                        label: 'Max % Fatturato Globale Annuo',
+                        data: [7, 3, 1.5],
+                        backgroundColor: [vibrantOrangesPalette.primaryOrange, vibrantOrangesPalette.mediumOrange, vibrantOrangesPalette.lightOrange],
+                        borderColor: vibrantOrangesPalette.deepOrange,
+                        borderWidth: 1,
+                        stack: 'stack0'
+                    },
+                    {
+                        label: 'Max Importo Fisso (Milioni €)',
+                        data: [35, 15, 7.5],
+                        backgroundColor: [
+                            vibrantOrangesPalette.primaryOrange + '99', 
+                            vibrantOrangesPalette.mediumOrange + '99',
+                            vibrantOrangesPalette.lightOrange + '99'
+                        ],
+                        borderColor: vibrantOrangesPalette.deepOrange,
+                        borderWidth: 1,
+                        stack: 'stack1'
+                    }
+                  ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { 
+                                color: vibrantOrangesPalette.textOnLight,
+                                callback: function(value) { return value + (this.chart.data.datasets[0].label.includes('%') ? '%' : 'M €'); }
+                            },
+                            grid: { color: vibrantOrangesPalette.lightOrange },
+                            title: { display: true, text: 'Valore Sanzione', color: vibrantOrangesPalette.textOnLight}
+                        },
+                        x: {
+                            ticks: { color: vibrantOrangesPalette.textOnLight, autoSkip: false },
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { color: vibrantOrangesPalette.textOnLight }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Sanzioni Massime per Non Conformità (Art. 99)',
+                            color: vibrantOrangesPalette.textOnLight,
+                            font: { size: 16 }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                 title: tooltipTitleCallback,
+                                 label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        if (context.datasetIndex === 0) { // Percentuale
+                                            label += context.parsed.y + '% del fatturato globale';
+                                        } else { // Importo fisso
+                                            label += '€' + context.parsed.y + ' Milioni';
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
+        const navbar = document.getElementById('navbar');
+        const topTriggerHeightNavbar = 60; 
+        let hideNavbarTimeoutId;
+
+        document.addEventListener('mousemove', function(e) {
+            if (e.clientY < topTriggerHeightNavbar) {
+                navbar.classList.add('navbar-visible');
+                if (hideNavbarTimeoutId) {
+                    clearTimeout(hideNavbarTimeoutId);
+                    hideNavbarTimeoutId = null;
+                }
+            } else {
+                const navRect = navbar.getBoundingClientRect();
+                if (navbar.classList.contains('navbar-visible') &&
+                    (e.clientY > navRect.bottom || e.clientX < navRect.left || e.clientX > navRect.right)) {
+                    
+                    if (!hideNavbarTimeoutId) {
+                        hideNavbarTimeoutId = setTimeout(() => {
+                            navbar.classList.remove('navbar-visible');
+                            hideNavbarTimeoutId = null;
+                        }, 500); 
+                    }
+                }
+            }
+        });
+
+        navbar.addEventListener('mouseenter', function() {
+            if (hideNavbarTimeoutId) {
+                clearTimeout(hideNavbarTimeoutId);
+                hideNavbarTimeoutId = null;
+            }
+            navbar.classList.add('navbar-visible');
+        });
+
+        navbar.addEventListener('mouseleave', function(e) {
+            if (e.clientY >= topTriggerHeightNavbar) {
+                 if (!hideNavbarTimeoutId) { 
+                    hideNavbarTimeoutId = setTimeout(() => {
+                        navbar.classList.remove('navbar-visible');
+                        hideNavbarTimeoutId = null;
+                    }, 500); 
+                }
+            }
+        });
+
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    const navHeight = navbar.classList.contains('navbar-visible') ? navbar.offsetHeight : 0;
+                    const offset = 10; 
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetElement.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset - navHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
