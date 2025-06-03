@@ -300,7 +300,7 @@
     <main class="container mx-auto p-4 md:p-8">
 
         <section id="introduzione" class="mb-12 pt-16 -mt-16">
-            <h2 class="text-3xl font-semibold section-title mb-6">Cos'è il Regolamento sull'IA?</h2>
+            <h2 class="text-3xl font-semibold section-title mb-6">Cos'è il Regolamento sull'AI?</h2>
             <div class="card">
                 <p class="text-lg mb-4">Il Regolamento (UE) 2024/1689, noto come "AI Act", stabilisce un quadro giuridico armonizzato per lo sviluppo, l'immissione sul mercato e l'uso dei sistemi di intelligenza artificiale (IA) all'interno dell'Unione Europea. L'obiettivo principale è garantire che i sistemi di IA siano sicuri e rispettino i diritti fondamentali e i valori dell'UE, promuovendo al contempo l'innovazione e la leadership europea nel settore.</p>
                 <p class="text-lg">Adotta un approccio basato sul rischio, imponendo obblighi più stringenti per i sistemi di IA che presentano rischi maggiori. Questo mira a creare fiducia nell'IA e a sbloccarne il potenziale per il bene sociale ed economico.</p>
@@ -607,58 +607,62 @@
                 <div class="space-y-6">
                     <div class="impact-item">
                         <h3 class="flex items-center text-xl mb-2"><span class="icon">📢</span>1. Sistemi IA con Obblighi di Trasparenza Specifici (Art. 50)</h3>
-                        <p class="mb-3">Certi sistemi IA, anche se non classificati ad alto rischio, devono rispettare obblighi di trasparenza per garantire che gli utenti siano consapevoli e informati quando interagiscono con l'IA o con contenuti generati artificialmente. L'obiettivo è prevenire l'inganno e promuovere la fiducia.</p>
+                        <p class="mb-3">Alcuni sistemi IA, pur non essendo classificati ad alto rischio, devono rispettare specifici obblighi di trasparenza per garantire che le persone siano consapevoli e informate quando interagiscono con l'IA o con contenuti generati artificialmente. Questi obblighi mirano a prevenire l'inganno e a promuovere la fiducia.</p>
                         <div class="space-y-4 ml-4">
                             <div class="detail-item">
                                 <span class="icon">🤖</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Interazione Uomo-Macchina (Art. 50.1)</h4>
-                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA destinati a interagire direttamente con le persone fisiche (es. chatbot, assistenti virtuali) devono progettarli in modo che le persone siano informate di interagire con un'IA, a meno che non sia ovvio date le circostanze.</p>
-                                    <p class="facile-context-detail">Facile.it: Se utilizza un chatbot per l'assistenza clienti, deve chiaramente indicare che l'utente sta comunicando con un sistema IA.</p>
+                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA destinati a interagire direttamente con le persone fisiche (es. chatbot, assistenti virtuali) devono progettarli in modo che le persone siano informate di interagire con un'IA, a meno che non sia palesemente ovvio date le circostanze (es. un robot fisico).</p>
+                                    <p class="facile-context-detail">Facile.it: Se utilizza un chatbot per l'assistenza clienti, deve chiaramente indicare che l'utente sta comunicando con un sistema IA, ad esempio con un disclaimer visibile.</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">🖼️</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Marcatura di Contenuti Artificiali (Art. 50.2)</h4>
-                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA (inclusi GPAI) che generano contenuti audio, immagine, video o testuali sintetici devono assicurare che gli output siano marcati in formato leggibile meccanicamente e rilevabili come generati o manipolati artificialmente (es. "watermarking"). Esenzioni per editing standard o se autorizzato per legge (es. indagini penali).</p>
+                                    <p>I <strong class="text-[#E65100]">fornitori</strong> di sistemi IA (inclusi GPAI) che generano contenuti audio, immagine, video o testuali sintetici devono assicurare che gli output siano marcati in formato leggibile meccanicamente e rilevabili come generati o manipolati artificialmente (es. "watermarking"). L'obiettivo è distinguere i contenuti artificiali da quelli autentici.</p>
+                                    <p>Questo obbligo non si applica se i sistemi IA svolgono una funzione di assistenza per l'editing standard, non modificano sostanzialmente l'input del deployer o la sua semantica, o se l'uso è autorizzato per legge (es. indagini penali).</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">🧐</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Riconoscimento Emozioni / Categorizzazione Biometrica (Art. 50.3)</h4>
-                                    <p>I <strong class="text-[#E65100]">deployer</strong> di tali sistemi devono informare le persone fisiche esposte al loro funzionamento. Non si applica se autorizzato per legge (es. indagini penali) e nel rispetto delle tutele.</p>
+                                    <p>I <strong class="text-[#E65100]">deployer</strong> di sistemi di riconoscimento delle emozioni o di sistemi di categorizzazione biometrica (che non siano vietati) devono informare le persone fisiche che vi sono esposte riguardo al funzionamento del sistema. Il trattamento dei dati personali deve avvenire in conformità con GDPR e altre normative applicabili.</p>
+                                    <p>L'obbligo non si applica se l'uso è autorizzato dalla legge per accertare, prevenire o indagare reati, nel rispetto delle tutele per i diritti fondamentali.</p>
                                 </div>
                             </div>
                              <div class="detail-item">
                                 <span class="icon">🎭</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Deepfake e Testi Generati Pubblicati (Art. 50.4)</h4>
-                                    <p>I <strong class="text-[#E65100]">deployer</strong> che usano IA per generare o manipolare immagini, audio o video "deepfake" devono dichiarare l'origine artificiale del contenuto. Per testi generati da IA e pubblicati su questioni di interesse pubblico, va indicata l'origine artificiale, a meno di revisione umana con responsabilità editoriale. Esenzioni per opere artistiche/creative (con adeguata informativa) o se autorizzato per legge.</p>
-                                    <p class="facile-context-detail">Facile.it: Se pubblicasse articoli informativi generati da IA, dovrebbe segnalarlo, a meno di una revisione editoriale umana che se ne assuma la responsabilità.</p>
+                                    <p>I <strong class="text-[#E65100]">deployer</strong> che usano IA per generare o manipolare immagini, audio o video che costituiscono un "deepfake" (cioè che sembrano falsamente autentici) devono rendere noto che il contenuto è stato generato o manipolato artificialmente, etichettandolo e rivelandone l'origine artificiale.</p>
+                                    <p>Per testi generati da IA e pubblicati allo scopo di informare il pubblico su questioni di interesse pubblico, va indicata l'origine artificiale, a meno che il contenuto non sia stato sottoposto a revisione umana o controllo editoriale e una persona fisica o giuridica ne abbia la responsabilità editoriale.</p>
+                                    <p>Esenzioni sono previste per opere manifestamente artistiche, creative, satiriche o fittizie (purché l'esistenza del contenuto manipolato sia rivelata in modo adeguato e senza ostacolare la fruizione dell'opera) o se l'uso è autorizzato per legge.</p>
+                                    <p class="facile-context-detail">Facile.it: Se pubblicasse articoli informativi generati interamente da IA, dovrebbe segnalarlo. Se utilizzasse immagini "deepfake" in campagne promozionali, dovrebbe dichiararlo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="impact-item">
-                        <h3 class="flex items-center text-xl mb-2"><span class="icon">✅</span>2. Sistemi IA a Rischio Minimo o Nullo</h3>
-                        <p class="mb-3">Questa categoria include la stragrande maggioranza dei sistemi IA attuali, che presentano un rischio basso o assente per i diritti fondamentali, la salute o la sicurezza.</p>
+                        <h3 class="flex items-center text-xl mb-2"><span class="icon">✅</span>2. Sistemi IA a Rischio Minimo o Nullo (Art. 2.12)</h3>
+                        <p class="mb-3">Questa categoria include la maggior parte dei sistemi IA attualmente in uso, che presentano un rischio basso o assente per i diritti fondamentali, la salute o la sicurezza. L'AI Act non impone obblighi specifici per questi sistemi, ma incoraggia l'adozione volontaria di <strong class="text-[#E65100]">codici di condotta</strong> (Art. 95).</p>
                         <div class="space-y-3 ml-4">
                             <div class="detail-item">
                                 <span class="icon">🎮</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Esempi Comuni</h4>
-                                    <p>Filtri anti-spam nelle email, sistemi IA integrati nei videogiochi (per il comportamento dei personaggi non giocanti), sistemi di traduzione automatica per uso personale, semplici strumenti di raccomandazione basati su preferenze esplicite e non invasivi, sistemi di gestione inventario.</p>
+                                    <p>Filtri anti-spam, sistemi IA integrati nei videogiochi, sistemi di traduzione automatica per uso personale, semplici strumenti di raccomandazione basati su preferenze esplicite e non invasivi, sistemi di gestione inventario, IA per l'ottimizzazione di processi produttivi senza impatto diretto sulla sicurezza delle persone.</p>
+                                    <p class="facile-context-detail">Facile.it: Sistemi interni per l'ottimizzazione di database, semplici filtri di ricerca sul sito che non comportano profilazione complessa.</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">📜</span>
                                 <div class="content-detail">
-                                    <h4 class="font-semibold">Regolamentazione</h4>
-                                    <p>L'AI Act <strong class="text-[#E65100]">non impone obblighi specifici</strong> per questa categoria. Tuttavia, il Regolamento incoraggia l'adesione volontaria a <strong class="text-[#E65100]">codici di condotta</strong> (Art. 95) per promuovere l'applicazione dei principi di un'IA affidabile, come quelli etici, la sostenibilità ambientale, o la progettazione inclusiva.</p>
-                                    <p class="facile-context-detail">Facile.it: Anche per i suoi sistemi a rischio minimo, potrebbe adottare best practice e codici di condotta per rafforzare la fiducia degli utenti e dimostrare un impegno verso un'IA responsabile.</p>
+                                    <h4 class="font-semibold">Approccio Regolamentare</h4>
+                                    <p>Nessun obbligo vincolante specifico dall'AI Act. L'obiettivo è permettere l'innovazione senza oneri eccessivi. Tuttavia, i fornitori e deployer sono incoraggiati ad applicare volontariamente requisiti aggiuntivi relativi, ad esempio, alla sostenibilità ambientale, alla progettazione inclusiva, e alla diversità dei team di sviluppo (Considerando 165).</p>
                                 </div>
                             </div>
                         </div>
@@ -666,14 +670,14 @@
 
                     <div class="impact-item">
                          <h3 class="flex items-center text-xl mb-2"><span class="icon">🧠</span>3. Modelli di IA per Finalità Generali (GPAI) (Capo V)</h3>
-                        <p class="mb-3">L'AI Act dedica un intero capo (Capo V) ai modelli GPAI, riconoscendo il loro ruolo fondamentale e le sfide uniche che presentano. Un GPAI è definito (Art. 3.63) come un modello IA, anche addestrato con grandi quantità di dati usando auto-apprendimento su larga scala, caratterizzato da <strong class="text-[#E65100]">generalità significativa</strong> e capace di svolgere con competenza un'<strong class="text-[#E65100]">ampia gamma di compiti distinti</strong>. Può essere integrato in vari sistemi o applicazioni a valle.</p>
+                        <p class="mb-3">L'AI Act (Art. 3.63) definisce un GPAI come un modello IA, anche addestrato con grandi quantità di dati usando auto-apprendimento su larga scala, caratterizzato da <strong class="text-[#E65100]">generalità significativa</strong> e capace di svolgere con competenza un'<strong class="text-[#E65100]">ampia gamma di compiti distinti</strong>. Può essere integrato in vari sistemi o applicazioni a valle. Non include modelli usati solo per ricerca, sviluppo o prototipazione prima dell'immissione sul mercato.</p>
                          <div class="space-y-3 ml-4">
                             <div class="detail-item">
                                 <span class="icon">🚀</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Caratteristiche e Impatto</h4>
                                     <p>Flessibilità, adattabilità, capacità di generare contenuti diversi (testo, immagini, codice). Sono la base di molti sistemi IA specifici e la loro qualità e sicurezza impattano l'intera catena del valore dell'IA.</p>
-                                    <p class="facile-context-detail">Es. Facile.it: Se Facile.it utilizzasse un modello GPAI di terzi (es. per un chatbot avanzato, analisi di documenti, generazione di contenuti personalizzati), il fornitore di quel modello GPAI avrebbe obblighi specifici. Se Facile.it sviluppasse un proprio GPAI (meno probabile), ne sarebbe il fornitore.</p>
+                                    <p class="facile-context-detail">Es. Facile.it: Se Facile.it utilizzasse un modello GPAI di terzi (es. Claude, Gemini, Llama) per il suo chatbot o per generare contenuti, sarebbe un "fornitore a valle" di quel GPAI. Il fornitore del modello GPAI (es. Anthropic, Google, Meta) avrebbe obblighi specifici.</p>
                                 </div>
                             </div>
                         </div>
@@ -681,77 +685,75 @@
 
                     <div class="impact-item">
                         <h3 class="flex items-center text-xl mb-2"><span class="icon">📝</span>4. Obblighi per tutti i Fornitori di Modelli GPAI (Art. 53)</h3>
-                        <p class="mb-3">Indipendentemente dal fatto che un GPAI sia classificato o meno con rischio sistemico, i suoi fornitori devono adempiere a una serie di obblighi per garantire trasparenza e permettere ai fornitori a valle di conformarsi:</p>
+                        <p class="mb-3">Indipendentemente dal rischio sistemico, i fornitori di modelli GPAI devono:</p>
                         <div class="space-y-3 ml-4">
                             <div class="detail-item">
                                 <span class="icon">📄</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Documentazione Tecnica (Allegato XI)</h4>
-                                    <p>Redigere e tenere aggiornata la documentazione tecnica del modello, inclusi dettagli su processo di addestramento, test, valutazione, architettura, parametri, dati usati, consumo energetico stimato. Da fornire all'AI Office e autorità nazionali su richiesta.</p>
+                                    <p>Redigere e mantenere documentazione sul modello (processo di addestramento, test, valutazione, architettura, parametri, dati usati, consumo energetico stimato, ecc.).</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">ℹ️</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Informazioni per Fornitori a Valle (Allegato XII)</h4>
-                                    <p>Mettere a disposizione dei fornitori di sistemi IA (che integrano il GPAI) informazioni e documentazione per comprendere capacità, limiti del modello e per adempiere ai propri obblighi (es. tipo e provenienza dati di addestramento, modalità di input/output).</p>
-                                    <p class="facile-context-detail">Es. Facile.it: Se integrasse un GPAI di terzi, dovrebbe ricevere queste informazioni per valutare l'adeguatezza del modello e per la propria conformità.</p>
+                                    <p>Fornire informazioni ai fornitori di sistemi IA che integrano il GPAI, per permettere loro di comprendere capacità/limiti e adempiere ai propri obblighi.</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">©️</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Policy sul Diritto d'Autore</h4>
-                                    <p>Attuare una politica per rispettare il diritto d'autore UE, in particolare per identificare e rispettare le riserve di diritti espresse dai titolari (Art. 4(3) Direttiva (UE) 2019/790 sul copyright nel mercato unico digitale).</p>
+                                    <p>Attuare una politica per rispettare il diritto d'autore UE, inclusa l'identificazione e il rispetto delle riserve di diritti per il Text and Data Mining (Direttiva (UE) 2019/790).</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">📊</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Sintesi Dati di Addestramento</h4>
-                                    <p>Redigere e rendere pubblica una sintesi sufficientemente dettagliata dei contenuti utilizzati per l'addestramento del modello (secondo un modello fornito dall'AI Office).</p>
+                                    <p>Rendere pubblica una sintesi sufficientemente dettagliata dei contenuti utilizzati per l'addestramento del modello.</p>
                                 </div>
                             </div>
                         </div>
-                         <p class="mt-3 text-sm">NB: Esenzioni parziali per i modelli GPAI rilasciati con licenza libera e open source (i cui parametri, architettura e uso sono pubblici) per quanto riguarda la documentazione tecnica (Art. 53.1.a) e le informazioni per i fornitori a valle (Art. 53.1.b), a meno che non presentino rischi sistemici. L'obbligo sulla policy per il copyright e sulla sintesi dei dati di addestramento si applica comunque (Art. 53.2).</p>
+                         <p class="mt-3 text-sm">Esenzioni parziali per i modelli GPAI rilasciati con licenza libera e open source (i cui parametri, architettura e uso sono pubblici) per quanto riguarda la documentazione tecnica e le informazioni per i fornitori a valle, a meno che non presentino rischi sistemici. L'obbligo sulla policy per il copyright e sulla sintesi dei dati di addestramento si applica comunque (Art. 53.2).</p>
                     </div>
 
                     <div class="impact-item">
                         <h3 class="flex items-center text-xl mb-2"><span class="icon">📈</span>5. GPAI con Rischio Sistemico (Art. 51, 55)</h3>
-                        <p class="mb-3">Un modello GPAI è classificato con <strong class="text-[#E65100]">rischio sistemico</strong> se ha capacità di impatto elevato (valutate su strumenti tecnici, indicatori e benchmark) o se la Commissione lo designa come tale (Art. 51). Si presume un rischio sistemico se la quantità cumulativa di calcolo usata per l'addestramento supera <strong class="text-[#E65100]">10<sup>25</sup> FLOPs</strong> (Art. 51.2). I fornitori devono notificare all'AI Office il raggiungimento di tale soglia (Art. 52).</p>
+                        <p class="mb-3">Un modello GPAI è classificato con <strong class="text-[#E65100]">rischio sistemico</strong> se ha capacità di impatto elevato o se la Commissione lo designa come tale (Art. 51). Si presume un rischio sistemico se la quantità cumulativa di calcolo usata per l'addestramento supera <strong class="text-[#E65100]">10<sup>25</sup> FLOPs</strong> (Art. 51.2), ma altri criteri (Allegato XIII) come numero di parametri, dimensione dataset, numero utenti, possono portare a tale classificazione.</p>
                         <p class="mb-3">Oltre agli obblighi dell'Art. 53, i fornitori di GPAI con rischio sistemico devono (Art. 55):</p>
                         <div class="space-y-3 ml-4">
                             <div class="detail-item">
                                 <span class="icon">🔬</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Valutazione Approfondita del Modello</h4>
-                                    <p>Effettuare e documentare test contraddittori (adversarial testing / red teaming), interni e/o esterni, per identificare e mitigare i rischi sistemici.</p>
+                                    <p>Condurre test contraddittori (adversarial testing / red teaming), interni e/o esterni, per identificare e mitigare i rischi sistemici.</p>
                                 </div>
                             </div>
                              <div class="detail-item">
                                 <span class="icon">⚙️</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Valutazione e Mitigazione dei Rischi Sistemici</h4>
-                                    <p>Valutare e mitigare continuamente i possibili rischi sistemici a livello dell'Unione, comprese le loro fonti, che possono derivare dallo sviluppo, immissione sul mercato o uso del modello.</p>
+                                    <p>Valutare e mitigare continuamente i possibili rischi sistemici a livello dell'Unione.</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">🚨</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Tracciamento e Segnalazione Incidenti Gravi</h4>
-                                    <p>Tenere traccia, documentare e riferire senza indebito ritardo all'AI Office e, se del caso, alle autorità nazionali competenti, informazioni su incidenti gravi ed eventuali misure correttive.</p>
+                                    <p>Tracciare, documentare e riferire all'AI Office e autorità competenti informazioni su incidenti gravi e misure correttive.</p>
                                 </div>
                             </div>
                             <div class="detail-item">
                                 <span class="icon">🛡️</span>
                                 <div class="content-detail">
                                     <h4 class="font-semibold">Cybersicurezza</h4>
-                                    <p>Garantire un livello adeguato di protezione della cybersicurezza per il modello GPAI e la sua infrastruttura fisica.</p>
+                                    <p>Garantire un livello adeguato di protezione della cybersicurezza per il modello e la sua infrastruttura.</p>
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-3 text-sm">L'AI Office incoraggia e agevola l'elaborazione di <strong class="text-[#E65100]">codici di buone pratiche</strong> (Art. 56) per aiutare i fornitori a dimostrare la conformità a questi obblighi. La Commissione può approvare tali codici o stabilire norme comuni.</p>
-                        <p class="facile-context-detail mt-2">Es. Facile.it: Come per i GPAI generici, è improbabile che Facile.it sviluppi internamente un GPAI con rischio sistemico. Tuttavia, se utilizzasse un modello di terzi così classificato, beneficerebbe indirettamente delle maggiori tutele e trasparenza imposte al fornitore di tale modello.</p>
+                        <p class="mt-3 text-sm">L'AI Office incoraggia <strong class="text-[#E65100]">codici di buone pratiche</strong> (Art. 56) per la conformità.</p>
                     </div>
                 </div>
             </div>
@@ -823,16 +825,11 @@
         </section>
 
         <section id="gpai" class="mb-12 pt-16 -mt-16">
-            <h2 class="text-3xl font-semibold section-title mb-6">🌐 Modelli di IA per Finalità Generali (GPAI) - Riepilogo Rischi Sistemici</h2>
+             <h2 class="text-3xl font-semibold section-title mb-6">🌐 Modelli di IA per Finalità Generali (GPAI) - Riepilogo Rischi Sistemici</h2>
             <div class="card">
                 <p class="text-lg mb-4">Questa sezione fornisce un riepilogo focalizzato sui modelli GPAI con rischio sistemico, già trattati in dettaglio nella sezione "Obblighi di Trasparenza, Rischio Minimo e Modelli GPAI".</p>
-                <p class="text-lg mb-6">I modelli GPAI che presentano un <span class="font-semibold text-[#E65100]">rischio sistemico</span> sono soggetti a obblighi aggiuntivi (Art. 55) rispetto a quelli generali per i GPAI (Art. 53). Un modello è considerato a rischio sistemico se ha capacità ad alto impatto o se soddisfa determinate soglie, ad esempio:</p>
-                <div class="text-center my-8">
-                    <p class="text-2xl md:text-3xl text-[#BF360C]">Quantità di calcolo cumulativa usata per l'addestramento:</p>
-                    <p class="stat-number text-4xl md:text-5xl my-2">&gt; 10<sup>25</sup> FLOPs</p>
-                    <p class="text-sm text-gray-600">(FLOPs: Floating Point Operations - Operazioni in Virgola Mobile)</p>
-                </div>
-                <p class="text-lg">Gli obblighi aggiuntivi includono valutazione approfondita del modello, gestione dei rischi sistemici, segnalazione di incidenti gravi e garanzia di un adeguato livello di cybersicurezza. Per i dettagli completi, si rimanda alla sezione dedicata.</p>
+                <p class="text-lg mb-2">I modelli GPAI che presentano un <span class="font-semibold text-[#E65100]">rischio sistemico</span> sono soggetti a obblighi aggiuntivi (Art. 55) rispetto a quelli generali per i GPAI (Art. 53). Un modello è considerato a rischio sistemico se ha capacità di impatto elevato o se soddisfa determinate soglie (definite nell'Art. 51 e Allegato XIII), che possono includere il numero di parametri, la dimensione del dataset, il numero di utenti, o la potenza di calcolo usata per l'addestramento (sebbene la soglia specifica di FLOPs sia un presunzione, non l'unico criterio).</p>
+                <p class="text-lg">Gli obblighi aggiuntivi per i GPAI a rischio sistemico includono valutazione approfondita del modello (inclusi test contraddittori), gestione continua dei rischi sistemici, segnalazione di incidenti gravi e garanzia di un adeguato livello di cybersicurezza. Per i dettagli completi, si rimanda alla sezione precedente.</p>
             </div>
         </section>
 
